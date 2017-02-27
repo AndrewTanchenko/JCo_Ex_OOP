@@ -30,10 +30,7 @@ class Vector {
   }
   
   public String toString(){
-    int[] v_ = new int[2];
-    v_[0]=getX();
-    v_[1]=getY();
-    return Arrays.toString(v_);
+    return Arrays.toString(getXY());
   }
   
   public void setXY(int x, int y){
