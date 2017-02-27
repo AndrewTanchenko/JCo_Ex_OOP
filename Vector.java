@@ -1,87 +1,118 @@
 // Javacore / Tanchenko A.
 
+import java.util.Arrays;
+
 class Vector {
   
-    public int x;
-    public int y;
-    public int[] v = {x,y};
+    private int x;
+    private int y;
+    private int[] v = {x,y};
   
   public Vector(){ 
-    x=0;
-    y=0;
-    v[0]=0;
-    v[1]=0;
+    //this.x=0;
+    //this.y=0;
+    this.v[0]=0;
+    this.v[1]=0;
   }
   
   public Vector(int x, int y){ 
-    x=this.x;
-    y=this.y;
-    v[0]=this.x;
-    v[1]=this.y;
+    //this.x=x;
+    //this.y=y;
+    this.v[0]=x;
+    this.v[1]=y;
   }
   
-  public void printVector(){
-    System.out.println("x="+x+",y="+y);
+  public static void printVector(Vector a){
+    int[] v_ = new int[2];
+    v_[0]=a.getX();
+    v_[1]=a.getY();
+    System.out.println(Arrays.toString(v_));
+  }
+  
+  public String toString(){
+    int[] v_ = new int[2];
+    v_[0]=getX();
+    v_[1]=getY();
+    return Arrays.toString(v_);
   }
   
   public void setXY(int x, int y){
-    v[0]=this.x;
-    v[1]=this.y;
+    this.v[0]=x;
+    this.v[1]=y;
+  }
+  public void setX(int x){
+    this.v[0]=x;
+  }
+  public void setY(int y){
+    this.v[1]=y;
   }
   
+  public int[] getXY(){
+  return v;
+  }
   public int getX(){
-  return x;
+  return v[0];
   }
   public int getY(){
-  return y;
+  return v[1];
   }
   
-  public int length(int[] a){
-    int l = 0;
-    l=(int)(Math.sqrt(a[0]*a[0]+a[1]*a[1]));
-  return l;
+  public int length(){
+  return (int)(Math.sqrt(v[0]*v[0]+v[1]*v[1]));
   }
   
-  public int[] sum(int[] a, int[] b){
-    int[] v =new int[2];
-    v[0]=a[0]+b[0];
-    v[1]=a[1]+b[1];
-  return v;
+  public Vector add(Vector a){
+  return new Vector(v[0]+a.getX(),v[1]+a.getY());
   }
   
-  public int[] sub(int[] a,int[] b){
-    int[] v =new int[2];
-    v[0]=a[0]-b[0];
-    v[1]=a[1]-b[1];
-  return v;
+  public Vector sub(Vector a){
+  return new Vector(v[0]-a.getX(),v[1]-a.getY());
   }
   
-  public int scalarMult(int[] a,int[] b){
-    int sMult = 0;
-    sMult=a[0]*b[0]+a[1]*b[1];
-  return sMult;
+  public static int scalarMult(Vector a,Vector b){
+  return (int)(a.getX()*b.getX()+a.getY()*b.getY());
   }
-  
-  public int[] constMult(int[] a,int c){
-    int[] v = new int[2];
-    v[0]=a[0]*c;
-    v[1]=a[1]*c;
+      
+  public int[] constMult(int c){
+    v[0]=v[0]*c;
+    v[1]=v[1]*c;
   return v;
   }
 
-
+//////////////////////////////////////////////////////
   
   public static void main(String[] args) {
     Vector a = new Vector(1,2);
+    Vector b = new Vector(3,4);
+
+
+    System.out.println ("Vector a= "+a.toString());
+    printVector(a);
+    System.out.println ("Vector b= "+b.toString());
+    printVector(b);
     
-    //a.setXY(1,2);
-    a.x=1;
-    a.y=2;
-    a.printVector();
+    System.out.println ("Vector a+b= ");
+    printVector(a.add(b));
     
-    //System.out.println (""+Arrays.toString(a));
-    System.out.println (""+a.getX());
-    System.out.println (""+a.getY());
+    System.out.println ("Vector a-b= ");
+    printVector(a.sub(b));
+    
+    System.out.println ("Scalar mult a*b= "+scalarMult(a,b));
+    
+    System.out.println ("Vector a=[2,3] ");
+    a.setXY(2,3);
+    printVector(a);
+    
+    System.out.println ("length a= "+a.length());
+    
+    int n=5;
+    System.out.println ("Vector a*"+n+"= ");
+    a.constMult(n);
+    printVector(a);
+    
+    
+    //System.out.println ("a(x,y)= "+a.getX()+","+a.getY());
+    //System.out.println ("b.y= "+b.getY());
     
   }
 }
