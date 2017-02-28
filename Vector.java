@@ -1,5 +1,4 @@
 // Javacore / Tanchenko A.
-/// Draft !!!!!!!!!
 
 import java.util.Arrays;
 
@@ -66,28 +65,62 @@ class Vector {
   public Vector sub(Vector a){
   return new Vector(v[0]-a.getX(),v[1]-a.getY());
   }
-  
-  public static int scalarMult(Vector a,Vector b){
-  return (int)(a.getX()*b.getX()+a.getY()*b.getY());
-  }
-      
+        
   public int[] constMult(int c){
     v[0]=v[0]*c;
     v[1]=v[1]*c;
   return v;
   }
+  
+  public static int scalarMult(Vector a,Vector b){
+  return (int)(a.getX()*b.getX()+a.getY()*b.getY());
+  }
+  
+  public static boolean checkCollinear(Vector a,Vector b){
+    boolean ans_=false;
+    if((float)(a.getX())/b.getX()==(float)(a.getY())/b.getY()){
+      ans_=true;
+    }
+  return ans_;
+  }
+  
+  public static boolean checkOrtogonal(Vector a,Vector b){
+    boolean ans_=false;
+    if(scalarMult(a,b)==0){
+      ans_=true;
+    }
+  return ans_;
+  }
 
 //////////////////////////////////////////////////////
   
   public static void main(String[] args) {
-    Vector a = new Vector(1,2);
-    Vector b = new Vector(3,4);
-
+    Vector a = new Vector(1,0);
+    Vector b = new Vector(0,4);
+    
+    Vector[] arrV = {a,b};
+    
+    
+    printVector(arrV[0]);
 
     System.out.println ("Vector a= "+a.toString());
-    printVector(a);
+    //printVector(a);
     System.out.println ("Vector b= "+b.toString());
-    printVector(b);
+    //printVector(b);
+    
+    if(checkCollinear(a,b)){
+      System.out.println ("Vectors a and b are collinear");
+    }
+    else{
+      System.out.println ("Vectors a and b aren't collinear");
+    }
+    
+    if(checkOrtogonal(a,b)){
+      System.out.println ("Vectors a and b are ortogonal");
+    }
+    else{
+      System.out.println ("Vectors a and b aren't ortogonal");
+    }
     
     System.out.println ("Vector a+b= ");
     printVector(a.add(b));
@@ -97,7 +130,7 @@ class Vector {
     
     System.out.println ("Scalar mult a*b= "+scalarMult(a,b));
     
-    System.out.println ("Vector a=[2,3] ");
+    System.out.println ("Vector set a=[2,3] ");
     a.setXY(2,3);
     printVector(a);
     
