@@ -1,0 +1,102 @@
+// Javacore / Tanchenko A.
+
+//import java.util.Arrays;
+
+class BRnum {
+  
+    private int a;
+    private int b;
+    private int c;
+    private char sign;
+  
+  public BRnum(int a, int b){ 
+    this.a=a;
+    this.b=b;
+    this.sign='/';
+  }
+  
+  public BRnum(int c, int a, int b){ 
+    this.a=a+b*c;
+    this.b=b;
+    this.sign='/';
+  }
+  
+  public BRnum(int a,char sign, int b){ 
+    this.a=a;
+    this.b=b;
+    this.sign=sign;
+  }
+  
+  public static void printBRnum(BRnum a){
+    System.out.println(""+a.getA()+a.sign+a.getB());
+  }
+  
+  public String toString(){
+    String s;
+    s=""+getA()+sign+getB();
+    return s;
+  }
+  
+  public double toDecimal(){
+    return (double)(a)/b;
+  }
+  
+  public void setA_B(int a, int b){
+    this.a=a;
+    this.b=b;
+  }
+
+  public void setA(int a){
+    this.a=a;
+  }
+  
+  public void setB(int b){
+    this.b=b;
+  }
+  
+  public int getA(){
+  return a;
+  }
+  public int getB(){
+  return b;
+  }
+  
+  public BRnum add(BRnum c){
+    if(b==c.getB()){return new BRnum(a+c.getA(),b);}
+  return new BRnum(a*c.getB()+b*c.getA(),b*c.getB());
+  }
+  
+  public BRnum sub(BRnum c){
+    if(b==c.getB()){return new BRnum(a-c.getA(),b);}
+  return new BRnum(a*c.getB()-b*c.getA(),b*c.getB());
+  }
+ 
+  public BRnum mult(BRnum c){
+  return new BRnum(a*c.getA(),b*c.getB());
+  }
+  
+  public BRnum div(BRnum c){
+  return new BRnum(a*c.getB(),b*c.getA());
+  } 
+  
+
+//////////////////////////////////////////////////////
+  
+  public static void main(String[] args) {
+    
+    BRnum br1=new BRnum(5,2);
+    BRnum br2=new BRnum(1,':',4);
+    BRnum br3=new BRnum(1,2,3);
+    
+    System.out.println ("Broken num br1 = "+br1.toString()+" = "+br1.toDecimal());
+    System.out.println ("Broken num br2 = "+br2.toString()+" = "+br2.toDecimal());
+    System.out.println ("Broken num br3 = "+br3.toString()+" = "+br3.toDecimal());
+    //printBRnum(br1);
+    
+    System.out.println ("br1 + br2 = "+br1.add(br2)+" = "+br1.add(br2).toDecimal());
+    System.out.println ("br1 - br2 = "+br1.sub(br2)+" = "+br1.sub(br2).toDecimal());
+    System.out.println ("br1 * br2 = "+br1.mult(br2)+" = "+br1.mult(br2).toDecimal());
+    System.out.println ("br1 / br2 = "+br1.div(br2)+" = "+br1.div(br2).toDecimal());
+    
+  }
+}
