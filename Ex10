@@ -88,9 +88,9 @@ class BRnum {
     BRnum br2=new BRnum(1,':',4);
     BRnum br3=new BRnum(1,2,3);
     
-    System.out.println ("Broken num br1 = "+br1.toString()+" = "+br1.toDecimal());
-    System.out.println ("Broken num br2 = "+br2.toString()+" = "+br2.toDecimal());
-    System.out.println ("Broken num br3 = "+br3.toString()+" = "+br3.toDecimal());
+    System.out.println ("Broken num br1 = "+br1+" = "+br1.toDecimal());
+    System.out.println ("Broken num br2 = "+br2+" = "+br2.toDecimal());
+    System.out.println ("Broken num br3 = "+br3+" = "+br3.toDecimal());
     //printBRnum(br1);
     
     System.out.println ("br1 + br2 = "+br1.add(br2)+" = "+br1.add(br2).toDecimal());
