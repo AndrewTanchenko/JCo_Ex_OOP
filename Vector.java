@@ -23,14 +23,13 @@ class Vector {
     this.v[1]=y;
   }
   
-  /*
-  public static void CreateVectorArray(String arrV, int num){ 
+  public static Vector CreateVectorArray(int num){ 
     Vector[] arrV = new Vector[num];
     for(int i=0; i<=num-1;i++){
       arrV[i] = new Vector();
     }
+  return arrV[num];
   }
-  */
     
   public static void printVector(Vector a){
     double[] v_ = new double[2];
@@ -106,7 +105,7 @@ class Vector {
     Vector b = new Vector(0,4);
     
     //Vector[] arrV = new Vector[2];
-    //CreateVectorArray(arrV,2);
+    //CreateVectorArray(2);
     Vector[] arrV = {a,b};
     
     
