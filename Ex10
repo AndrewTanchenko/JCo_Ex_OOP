@@ -32,9 +32,9 @@ class BRnum {
   }
   
   public String toString(){
-    String s;
-    s=""+getA()+sign+getB();
-    return s;
+    //String s;
+    //s=""+getA()+sign+getB();
+    return ""+getA()+sign+getB();
   }
   
   public double toDecimal(){
@@ -55,10 +55,10 @@ class BRnum {
   }
   
   public int getA(){
-  return a;
+  return this.a;
   }
   public int getB(){
-  return b;
+  return this.b;
   }
   
   public BRnum add(BRnum c){
