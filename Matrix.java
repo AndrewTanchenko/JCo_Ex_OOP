@@ -6,58 +6,52 @@ class Matrix {
   
     private int m;
     private int n;
-    private int[][] a = new int[m][n];
+    private double[][] a = new double[m][n];
+    
+    
+  public Matrix(){
+    this.m=2;
+    this.n=2;
+    this.a = new double[m][n];
+  }
   
   public Matrix(int m, int n){ 
-    for(int i=0;i<=m-1;i++){
-      for(int j=0;j<=n-1;j++){
-        this.a[i][j]=0;
-      }
-    }
+    this.m=m;
+    this.n=n;
+    this.a = new double[m][n];
   }
   
-  public int getRow(){
-  return m;
+  public int getRowN(){
+  return this.m;
   }
-  public int getCol(){
-  return n;
+  public int getColN(){
+  return this.n;
+  }
+  
+  public String rowToString(int i){
+  return Arrays.toString(this.a[i-1]);
+  }
+  
+  public String toString(){   
+  return Arrays.deepToString(this.a);
   }
   
   public static void printMatrix(Matrix a){
-    //int row = new int[2];
-    //v_[0]=a.getX();
-    //v_[1]=a.getY();
-    //System.out.println(Arrays.toString(v_));
-    //Arrays.deepToString(a);
-    //Arrays.toString(a[i]);
+    for(int i=1;i<=a.getRowN();i++){
+      System.out.println(a.rowToString(i));
+    }
   }
-  
   
 //////////////////////////////////////////////////////
   
   public static void main(String[] args) {
-    Matrix a1 = new Matrix(3,3);
+    Matrix a = new Matrix(3,3);
     
-    //System.out.println ("getM "+a.getM());
+    System.out.println("getRow = "+a.getRowN());
+    System.out.println("getCol = "+a.getColN());
     
-    int m=4,
-        n=3;
-    int[][] a = new int[m][n];
-    
-    //for(int i=0;i<=m-1;i++){
-    //Arrays.fill(a[i], 0);
-    //}
-    
-    for(int i=0;i<=m-1;i++){
-      for(int j=0;j<=n-1;j++){
-        a[i][j]=0;
-      }
-    }
-    
-    System.out.println (Arrays.deepToString(a));
-    
-    System.out.println (Arrays.toString(a[0]));
-    
+    System.out.println(a);
+    printMatrix(a);
     
   }
 }
