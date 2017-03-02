@@ -104,9 +104,9 @@ class Vector {
     Vector a = new Vector(1,0);
     Vector b = new Vector(0,4);
     
-    //Vector[] arrV = new Vector[2];
-    //CreateVectorArray(2);
-    Vector[] arrV = {a,b};
+    Vector[] arrV = new Vector[2];
+    arrV = CreateVectorArray(2);
+    //Vector[] arrV = {a,b};
     
     
     printVector(arrV[0]);
