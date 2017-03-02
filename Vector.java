@@ -23,12 +23,12 @@ class Vector {
     this.v[1]=y;
   }
   
-  public static Vector CreateVectorArray(int num){ 
+  public static Vector[] CreateVectorArray(int num){ 
     Vector[] arrV = new Vector[num];
     for(int i=0; i<=num-1;i++){
       arrV[i] = new Vector();
     }
-  return arrV[num];
+  return arrV;
   }
     
   public static void printVector(Vector a){
