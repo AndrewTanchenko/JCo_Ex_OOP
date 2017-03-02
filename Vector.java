@@ -137,7 +137,7 @@ class Vector {
     System.out.println ("Scalar mult a*b= "+scalarMult(a,b));
     
     a.setXY(3,4);
-    System.out.println ("Vector set a=[2,3] "+a);
+    System.out.println ("Vector set a=[3,4] "+a);
     //printVector(a);
     
     System.out.println ("length a= "+a.length());
