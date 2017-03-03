@@ -1,0 +1,63 @@
+public class Triangle extends Shape{
+  private double a;
+  private double b;
+  private double b;
+  
+  public Triangle(){
+    this.a=1;
+    this.a=1;
+    this.a=1;
+  }
+  
+  private Triangle(double a, double b, double c){
+    this.a=a;
+    this.a=b;
+    this.a=b;
+  }
+  
+  public boolean checkTriangle(double a, double b, double c){
+    if(((a+b)>c)&&((b+c)>a)&&((a+c)>b)){
+          return true;
+        }
+        else{
+          return false;
+        }
+  }
+    
+      
+  public static Triangle createTriangle(double a, double b, double c){
+        if(checkTriangle(a,b,c)){
+          return new Triangle(double a, double b, double c);
+        }
+        else{
+          return null;
+        }
+  }
+  
+  public double getA(Triangle t){
+    return this.a;
+  }
+  
+  public double getB(Triangle t){
+    return this.b;
+  }
+    
+   
+  public double getPerimeter(Triangle t){
+    return this.a+this.b+this.c;
+  }
+  
+  public double getPerimeter(Triangle t){
+    double p=getPerimeter(t)/2;
+    return Math.sqrt(p*(p-this.a)*(p-this.b)*(p-this.c));
+  }
+    
+  public boolean equals(Trianlge t){
+    if(this.a==a&&this.b=b&&this.c==c){
+      return true;
+    }
+  }
+  
+  public String toString(Triangle t){
+    return "Triangle has a= "+this.a+" b= "+this.b+" c= "+this.c);
+}
