@@ -1,18 +1,18 @@
 public class Triangle extends Shape {
   private double a;
   private double b;
-  private double b;
+  private double c;
   
   public Triangle(){
     this.a=1;
-    this.a=1;
-    this.a=1;
+    this.b=1;
+    this.c=1;
   }
   
   private Triangle(double a, double b, double c){
     this.a=a;
-    this.a=b;
-    this.a=b;
+    this.b=b;
+    this.c=c;
   }
   
   public boolean checkTriangle(double a, double b, double c){
@@ -22,10 +22,9 @@ public class Triangle extends Shape {
         else{
           return false;
         }
-  }
-    
+  } 
       
-  public static Triangle createTriangle(double a, double b, double c){
+  public Triangle createTriangle(double a, double b, double c){
         if(checkTriangle(a,b,c)){
           return new Triangle(a, b, c);
         }
@@ -33,44 +32,35 @@ public class Triangle extends Shape {
           return null;
         }
   }
-  
-  public double getA(Triangle t){
+    
+  public double getA(){
     return this.a;
   }
-  
-  public double getB(Triangle t){
+  public double getB(){
     return this.b;
   }
-    
+  public double getC(){
+    return this.c;
+  } 
    
   public double getPerimeter(){
     return this.a+this.b+this.c;
   }
   
   public double getArea(){
-    double p=getPerimeter(t)/2;
+    double p=getPerimeter()/2;
     return Math.sqrt(p*(p-this.a)*(p-this.b)*(p-this.c));
   }
     
-  public boolean equals(Trianlge t){
-    if(this.a==a&&this.b=b&&this.c==c){
+  public boolean equals(Triangle t){
+    if(t.getA()==this.a&&t.getB()==this.b&&t.getC()==this.c){
       return true;
     }
+  return false;
   }
   
-  public String toString(Triangle t){
+  public String toString(){
     return "Triangle has a= "+this.a+" b= "+this.b+" c= "+this.c;
-}
+  }
 
-public static void main(String[] args) {
-
-Shape sh;
-sh = new Triangle();
- System.out.println (sh);
 }
-}
-
-    
-    
-        
-      
