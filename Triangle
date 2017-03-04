@@ -15,7 +15,7 @@ public class Triangle extends Shape {
     this.c=c;
   }
   
-  public boolean checkTriangle(double a, double b, double c){
+  public static boolean checkTriangle(double a, double b, double c){
     if(((a+b)>c)&&((b+c)>a)&&((a+c)>b)){
           return true;
         }
@@ -24,7 +24,7 @@ public class Triangle extends Shape {
         }
   } 
       
-  public Triangle createTriangle(double a, double b, double c){
+  public static Triangle createTriangle(double a, double b, double c){
         if(checkTriangle(a,b,c)){
           return new Triangle(a, b, c);
         }
@@ -63,4 +63,14 @@ public class Triangle extends Shape {
     return "Triangle has a= "+this.a+" b= "+this.b+" c= "+this.c;
   }
 
+  ///////////////////////// MAIN ////////////////////////////
+  public static void main(String[] args) {
+    //Triangle t =new Triangle();
+    Triangle t =createTriangle(1,2,2);
+    
+    System.out.println (t);
+    if(checkTriangle(1,2,2)){System.out.println ("Ok");}
+    else{System.out.println ("Fail");}
+    
+  }
 }
