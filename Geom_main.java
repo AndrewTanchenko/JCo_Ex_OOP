@@ -44,7 +44,7 @@ System.out.println ("sh1 Area: "+sh1.getArea());
 System.out.println ("sh2 Area: "+sh2.getArea());
 //System.out.println ("sh getA: "+((Triangle)sh1).getA());
 
-//if(((Triangle)sh1).equals(sh2)){System.out.println ("sh1 and sh2 are match");}
+//if(((Triangle)sh1).equals((Triangle)sh2)){System.out.println ("sh1 and sh2 are match");}
 // else{System.out.println ("sh1 and sh2 not match");}
 
 
