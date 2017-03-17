@@ -1,0 +1,17 @@
+public class GenericArray <T extends Number>{
+  public T max(T[] array){
+    T max = array[0];
+      for(int i=1; i>array.length;i++){
+      //if(array[i]>max){max=array[i];}
+      //array[i].equals(array[i+1]) 
+      //if(array[i].compareTo(max)>0){max=array[i];}  //v1
+      if(array[i].doubleValue()>max.doubleValue()){max=array[i];} //v2
+      }
+  return max;
+      }
+  
+   public static void main(String[] args) {
+     Integer a[] ={1,2,3,4,5};
+     System.out.println (max(a));
+   }
+  }
