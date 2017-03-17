@@ -10,12 +10,12 @@ class Notepad {
   
   public Notepad(int n){ 
     this.listNum=n;
-    this.notes = new String[n];
+    this.notes = new String[n+1];
   }
   
   public void setListNum(int n){
     this.listNum=n;
-    this.notes = new String[n];
+    this.notes = new String[n+1];
   }
   
   public int getListNum(){
@@ -65,22 +65,28 @@ class Test{
   public static void main(String[] args) {
     
     Notepad np  = new Notepad(10);
-    Notepad np2 = new Notepad(5);
+    Notepad np2 = new Notepad();
+      np2.setListNum(5);
       
-    System.out.println ("List Num: "+np.getListNum());
-    System.out.println ("List 1: "+np.getPage(1));
-    System.out.println ("Num of pages: "+np);  
-    System.out.println ("Page 1 : "+np.toString(1));
+    System.out.println ("Notepad 1 List Num: "+np.getListNum());
+    System.out.println ("Notepad 2 List Num: "+np2.getListNum());
+    System.out.println ("Notepad 1 List 1: "+np.getPage(1));
+    System.out.println ("Notepad 2 List 1: "+np2.getPage(1));
+    System.out.println ("Notepad 1: "+np);  
+    System.out.println ("Notepad 2: "+np2); 
+    System.out.println ("Notepad 1 Page 1 : "+np.toString(1));
+    System.out.println ("Notepad 2 Page 1 : "+np2.toString(1));
       
     Notepad.Note note  = np.new Note();
     Notepad.Note note2 = np2.new Note();
-    System.out.println ("Note: "+note);
+    //System.out.println ("Note: "+note);
   
     note.createNote(1,"note 1");
     note.createNote(1,"note 2");
       
     note2.createNote(1,"note 1");
     
+    System.out.println ();  
     System.out.println ("Notepad 1 Page 1: "+np.getPage(1));
     System.out.println ("Notepad 2 Page 1: "+np2.getPage(1));
     
