@@ -1,0 +1,88 @@
+class Notepad {
+  
+    private int listNum;
+    private String[] notes;
+  
+  public Notepad(){ 
+    this.listNum=1;
+    this.notes = new String[1];
+  }
+  
+  public Notepad(int n){ 
+    this.listNum=n;
+    this.notes = new String[n];
+  }
+  
+  public void setListNum(int n){
+    this.listNum=n;
+    this.notes = new String[n];
+  }
+  
+  public int getListNum(){
+  return this.listNum;
+  }
+    
+  public String getPage(int list){
+      if(list<=this.listNum){
+          return this.notes[list];}
+      else return null;
+  }  
+    
+  public String toString(){
+  return "Notepad has "+this.listNum+" pages";
+  }  
+    
+  public String toString(int list){
+  return "Page contained: "+this.notes[list];
+  }  
+  
+ class Note {
+  	
+  private String note;
+  	
+  public Note(){ 
+    this.note = "";
+  }
+  
+  public boolean createNote(int list, String note_){ 
+      this.note+=" "+note_;
+      if(list<=listNum) {notes[list]=this.note;}
+    else return false;
+  return true;
+  }
+  	
+  public String toString(){
+  	return this.note;
+  }
+  
+ }
+}  
+  
+
+//////////////////////////////////////////////////////
+class Test{    
+  
+  public static void main(String[] args) {
+    
+    Notepad np  = new Notepad(10);
+    Notepad np2 = new Notepad(5);
+      
+    System.out.println ("List Num: "+np.getListNum());
+    System.out.println ("List 1: "+np.getPage(1));
+    System.out.println ("Num of pages: "+np);  
+    System.out.println ("Page 1 : "+np.toString(1));
+      
+    Notepad.Note note  = np.new Note();
+    Notepad.Note note2 = np2.new Note();
+    System.out.println ("Note: "+note);
+  
+    note.createNote(1,"note 1");
+    note.createNote(1,"note 2");
+      
+    note2.createNote(1,"note 1");
+    
+    System.out.println ("Notepad 1 Page 1: "+np.getPage(1));
+    System.out.println ("Notepad 2 Page 1: "+np2.getPage(1));
+    
+  }
+}
