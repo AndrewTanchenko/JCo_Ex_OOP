@@ -1,0 +1,29 @@
+import java.util.HashMap;
+
+/**
+ * Created by student on 3/24/2017.
+ */
+public class DemoHashMap {
+    public static void main (String[] args){
+        HashMap<Integer, String> hm = new  HashMap<Integer, String>(5);
+        for (int i=11; i<15; i++);
+        hm.put(i,i+"EL");
+        System.out.println(hm);
+        hm.put(12, "EL14");
+        System.out.println(hm+"with element exchange");
+        String a = hm.get(12);
+        System.out.println(a + "-found on key 12");
+
+
+        Set<Map.Entry<Integer, String>> setvalue = hm.entrySet();
+        System.out.println(setvalue);
+        Iterator<Map.Entry<Integer, String>> i =setvalue.iterator();
+        while (i.hasNext()){
+            Map.Entry<Integer, String>> me = i.next();
+            System.out.println(me.getKey()+" : ");
+            System.out.println(me.getValue());
+        }
+
+
+    }
+}
