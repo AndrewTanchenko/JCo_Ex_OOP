@@ -11,7 +11,6 @@ public class Parking
         this.parkingPlaces=10;
         this.park = new ArrayList<String>();
         for(int i=0;i<=9;i++){this.park.add("free");}
-        //ListIterator litr = ar.listIterator(); 
     }
     
         private Parking(int N){
@@ -45,8 +44,6 @@ public class Parking
     }
     
     public int getFreePlace(){
-        //var i1 = this.park.indexOf("free");
-        //var i2 = this.park.lastIndexOf("free");
         if(this.park.indexOf("free") <= (this.parkingPlaces-1-this.park.lastIndexOf("free"))){
             return this.park.indexOf("free");}
         else{
@@ -57,15 +54,24 @@ public class Parking
         this.park.set(getFreePlace(),carNubmer);
     }
     
+    public boolean takeCar(String carNubmer){
+        if(this.park.indexOf(carNubmer)>=0){
+            this.park.set(this.park.indexOf(carNubmer),"free");
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
     
     
-    
+/////////////////////////////////////////////////////////////
 	public static void main(String[] args) {
 	    
 	    Parking p = new Parking(5);
 	    
 	    System.out.println("All places = "+p.getAllPlaces());
-	    //System.out.println("All free places = "+p.getAllFreePlaces());
 	    System.out.println("park = "+p);
 	    
 	    System.out.println("Free place = "+p.getFreePlace());
@@ -74,6 +80,12 @@ public class Parking
 	    
 	    System.out.println("Free place = "+p.getFreePlace());
 	    p.putCar("2222");
+	    System.out.println("park = "+p);
+	    
+	    p.takeCar("1111");
+	    System.out.println("park = "+p);
+	    
+	    p.takeCar("2222");
 	    System.out.println("park = "+p);
 	
 	}
