@@ -6,7 +6,6 @@ public class Parking
     private List park;
     
     
-    
     private Parking(){
         this.parkingPlaces=10;
         this.park = new ArrayList<String>();
@@ -49,13 +48,13 @@ public class Parking
             return this.park.lastIndexOf("free");}
     }
     
-    public void putCar(String carNubmer){
-        this.park.set(getFreePlace(),carNubmer);
+    public void putCar(String carNumber){
+        this.park.set(getFreePlace(),""+carNumber);
     }
     
-    public boolean takeCar(String carNubmer){
-        if(this.park.indexOf(carNubmer)>=0){
-            this.park.set(this.park.indexOf(carNubmer),"free");
+    public boolean takeCar(String carNumber){
+        if(this.park.indexOf(carNumber)>=0){
+            this.park.set(this.park.indexOf(""+carNumber),"free");
             return true;
         }
         else{
