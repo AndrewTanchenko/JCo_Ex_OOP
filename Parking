@@ -1,65 +1,80 @@
-// draft
-
 import java.util.*;
 
 public class Parking
 {
-    private int ParkingPlaces;
-    //private int FreeParkingPlaces;
-    //private int FreePlace;
+    private int parkingPlaces;
     private List park;
     
     
     
     private Parking(){
-        this.ParkingPlaces=10;
-        //this.FreeParkingPlaces=10;
-        //this.FreePlace=1;
-        this.park = new LinkedList();
+        this.parkingPlaces=10;
+        this.park = new ArrayList<String>();
+        for(int i=0;i<=9;i++){this.park.add("free");}
         //ListIterator litr = ar.listIterator(); 
     }
     
         private Parking(int N){
-        this.ParkingPlaces=N;
-        //this.FreeParkingPlaces=10;
-        //this.FreePlace=1;
-        this.park = new LinkedList();
-        //ListIterator litr = ar.listIterator(); 
+        this.parkingPlaces=N;
+        this.park = new ArrayList<String>(N);
+        for(int i=0;i<=N-1;i++){this.park.add("free");}
     }
     
-    public void CreateParking(int N){
-        this.ParkingPlaces=N;
-        //this.FreeParkingPlaces=N;
-        //this.FreePlace=1;
-        this.park = new LinkedList();
-        //ListIterator litr = ar.listIterator(); 
+    public void createParking(int N){
+        this.parkingPlaces=N;
+        this.park = new ArrayList<String>(N);
+        for(int i=0;i<=N-1;i++){this.park.add("free");}
     }
     
-    public int getAllParkingPlaces(){
-        return this.ParkingPlaces;
-    }
-    
-    public int getAllFreeParkingPlaces(){
-        return this.ParkingPlaces - this.park.size();
-    }
-    
-    public int getFreePlace(){
-        if(this.park.get)
+    public int getAllPlaces(){
         return this.park.size();
     }
     
-    //public boolean PutCar(int carNubmer)
+    public int getCarNum(){
+        int i=0;
+        List<String> park2; 
+        park2 = (ArrayList<String>) ((ArrayList) this.park).clone();
+        while(park2.contains("free")){
+             park2.remove(park2.indexOf("free"));
+        } 
+        return park2.size();
+    }
+    
+    public String toString(){
+        return ""+this.park;
+    }
+    
+    public int getFreePlace(){
+        //var i1 = this.park.indexOf("free");
+        //var i2 = this.park.lastIndexOf("free");
+        if(this.park.indexOf("free") <= (this.parkingPlaces-1-this.park.lastIndexOf("free"))){
+            return this.park.indexOf("free");}
+        else{
+            return this.park.lastIndexOf("free");}
+    }
+    
+    public void putCar(String carNubmer){
+        this.park.set(getFreePlace(),carNubmer);
+    }
     
     
     
     
 	public static void main(String[] args) {
 	    
-	    Parking p = new Parking(20);
+	    Parking p = new Parking(5);
 	    
-	    System.out.println("All places = "+p.getAllParkingPlaces());
-	    System.out.println("All free places = "+p.getAllFreeParkingPlaces());
-	    System.out.println("Near free place = "+p.getFreePlace());
+	    System.out.println("All places = "+p.getAllPlaces());
+	    //System.out.println("All free places = "+p.getAllFreePlaces());
+	    System.out.println("park = "+p);
+	    
+	    System.out.println("Free place = "+p.getFreePlace());
+	    p.putCar("1111");
+	    System.out.println("park = "+p);
+	    
+	    System.out.println("Free place = "+p.getFreePlace());
+	    p.putCar("2222");
+	    System.out.println("park = "+p);
 	
 	}
 }
