@@ -30,7 +30,6 @@ public class Parking
     }
     
     public int getCarNum(){
-        int i=0;
         List<String> park2; 
         park2 = (ArrayList<String>) ((ArrayList) this.park).clone();
         while(park2.contains("free")){
@@ -81,6 +80,7 @@ public class Parking
 	    System.out.println("Free place = "+p.getFreePlace());
 	    p.putCar("2222");
 	    System.out.println("park = "+p);
+	    System.out.println("park cars = "+p.getCarNum());
 	    
 	    p.takeCar("1111");
 	    System.out.println("park = "+p);
