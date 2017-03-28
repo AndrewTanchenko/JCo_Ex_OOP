@@ -49,12 +49,12 @@ public class Parking
     }
     
     public void putCar(String carNumber){
-        this.park.set(getFreePlace(),""+carNumber);
+        this.park.set(getFreePlace(),carNumber);
     }
     
     public boolean takeCar(String carNumber){
         if(this.park.indexOf(carNumber)>=0){
-            this.park.set(this.park.indexOf(""+carNumber),"free");
+            this.park.set(this.park.indexOf(carNumber),"free");
             return true;
         }
         else{
