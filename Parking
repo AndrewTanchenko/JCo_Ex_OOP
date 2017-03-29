@@ -63,7 +63,6 @@ class Parking
         else{return true;}
     }
     
-    
     public boolean takeCar(String carNumber){
         if(this.park.indexOf(carNumber)>=0){
             this.park.set(this.park.indexOf(carNumber),"free");
@@ -83,20 +82,6 @@ class Parking
         }  
     }
     
-    public void printParkingCars(){
-        List<String> park2; 
-        park2 = (ArrayList<String>) ((ArrayList) this.park).clone();
-        while(park2.contains("free")){
-             park2.remove(park2.indexOf("free"));
-        }
-        if(park2.size()>0){
-                System.out.println(">>> Cars on parking: "+park2);
-        }
-        else{
-            System.out.println(">>> No cars on parking");    
-        }       
-    }
-    
     public String getParkingCars(){
         List<String> park2; 
         park2 = (ArrayList<String>) ((ArrayList) this.park).clone();
@@ -108,6 +93,16 @@ class Parking
         }
         else{
             return null;    
+        }
+                
+    }
+    
+    public void printParkingCars(){
+        if(this.getParkingCars() != null){
+            System.out.println(">>> Cars on parking: "+this.getParkingCars());
+        }
+        else{
+            System.out.println(">>> No cars on parking");
         }
                 
     }
