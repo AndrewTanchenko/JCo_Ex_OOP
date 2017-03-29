@@ -1,12 +1,3 @@
-import java.util.*;
-
-class Parking
-{
-    private int parkingPlaces;
-    private List park;
-    
-    
-    private Parking(){
         this.parkingPlaces=10;
         this.park = new ArrayList<String>();
         for(int i=0;i<=9;i++){this.park.add("free");}
@@ -48,7 +39,7 @@ class Parking
             return this.park.lastIndexOf("free");}
     }
     
-    public boolean putCar(String carNumber){
+    public boolean putCar(Object carNumber){
         if(isFreePlace()){
             this.park.set(getFreePlace(),carNumber);
             return true;}
@@ -63,7 +54,7 @@ class Parking
         else{return true;}
     }
     
-    public boolean takeCar(String carNumber){
+    public boolean takeCar(Object carNumber){
         if(this.park.indexOf(carNumber)>=0){
             this.park.set(this.park.indexOf(carNumber),"free");
             return true;
@@ -73,7 +64,7 @@ class Parking
         }  
     }
     
-    public int getCarPlace(String carNumber){
+    public int getCarPlace(Object carNumber){
         if(this.park.indexOf(carNumber)>=0){
             return this.park.indexOf(carNumber)+1;
         }
@@ -82,14 +73,14 @@ class Parking
         }  
     }
     
-    public String getParkingCars(){
+    public List getParkingCars(){
         List<String> park2; 
         park2 = (ArrayList<String>) ((ArrayList) this.park).clone();
         while(park2.contains("free")){
              park2.remove(park2.indexOf("free"));
         }
         if(park2.size()>0){
-            return ""+park2;
+            return park2;
         }
         else{
             return null;    
@@ -111,57 +102,3 @@ class Parking
 /////////////////////////////////////////////////////////////
     public static void main(String[] args) {
         
-        Parking p = new Parking(5);
-        
-        System.out.println("All places = "+p.getAllPlaces());
-        System.out.println("park = "+p);
-        System.out.println();
-        p.printParkingCars();
-        System.out.println("parking cars = "+p.getParkingCars());
-        
-        System.out.println("Free place = "+p.getFreePlace());
-        p.putCar("1111");
-        System.out.println("park = "+p);
-        System.out.println();
-        
-        System.out.println("Free place = "+p.getFreePlace());
-        p.putCar("2222");
-        System.out.println("park = "+p);
-        System.out.println();
-        System.out.println("park cars = "+p.getParkingCarNum());
-        
-        System.out.println("Free place = "+p.getFreePlace());
-        p.putCar("3333");
-        System.out.println("park = "+p);
-        System.out.println();
-        
-        System.out.println("Free place = "+p.getFreePlace());
-        p.putCar("4444");
-        System.out.println("park = "+p);
-        System.out.println();
-        
-        System.out.println("Free place = "+p.getFreePlace());
-        p.putCar("5555");
-        System.out.println("park = "+p);
-        System.out.println();
-        
-        System.out.println("Free place = "+p.getFreePlace());
-        p.putCar("6666");
-        System.out.println("park = "+p);
-        System.out.println();
-        
-        System.out.println("1111 has park place = "+p.getCarPlace("1111"));
-        System.out.println("8888 has park place = "+p.getCarPlace("8888"));
-        System.out.println("park = "+p);
-        
-        p.takeCar("1111");
-        System.out.println("park = "+p);
-        
-        p.takeCar("2222");
-        System.out.println("park = "+p);
-        
-        p.printParkingCars();
-        System.out.println("parking cars = "+p.getParkingCars());
-    
-    }
-}
