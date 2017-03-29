@@ -28,7 +28,7 @@ class Parking
         return this.park.size();
     }
     
-    public int getCarNum(){
+    public int getParkingCarNum(){
         List<String> park2; 
         park2 = (ArrayList<String>) ((ArrayList) this.park).clone();
         while(park2.contains("free")){
@@ -36,6 +36,7 @@ class Parking
         } 
         return park2.size();
     }
+    
     
     public String toString(){
         return ""+this.park;
@@ -71,8 +72,31 @@ class Parking
         }
         else{
             return false;
+        }  
+    }
+    
+    public int getCarPlace(String carNumber){
+        if(this.park.indexOf(carNumber)>=0){
+            return this.park.indexOf(carNumber)+1;
         }
-        
+        else{
+            return -1;
+        }  
+    }
+    
+    public void printParkingCars(){
+        List<String> park2; 
+        park2 = (ArrayList<String>) ((ArrayList) this.park).clone();
+        while(park2.contains("free")){
+             park2.remove(park2.indexOf("free"));
+        }
+        if(park2.size()>0){
+                System.out.println(">>> Cars on parking: "+park2);
+        }
+        else{
+            System.out.println(">>> No cars on parking");    
+        }
+                
     }
     
     
@@ -84,6 +108,7 @@ class Parking
         System.out.println("All places = "+p.getAllPlaces());
         System.out.println("park = "+p);
         System.out.println();
+        p.printParkingCars();
         
         System.out.println("Free place = "+p.getFreePlace());
         p.putCar("1111");
@@ -94,7 +119,7 @@ class Parking
         p.putCar("2222");
         System.out.println("park = "+p);
         System.out.println();
-        System.out.println("park cars = "+p.getCarNum());
+        System.out.println("park cars = "+p.getParkingCarNum());
         
         System.out.println("Free place = "+p.getFreePlace());
         p.putCar("3333");
@@ -116,11 +141,17 @@ class Parking
         System.out.println("park = "+p);
         System.out.println();
         
+        System.out.println("1111 has park place = "+p.getCarPlace("1111"));
+        System.out.println("8888 has park place = "+p.getCarPlace("8888"));
+        System.out.println("park = "+p);
+        
         p.takeCar("1111");
         System.out.println("park = "+p);
         
         p.takeCar("2222");
         System.out.println("park = "+p);
+        
+        p.printParkingCars();
     
     }
 }
