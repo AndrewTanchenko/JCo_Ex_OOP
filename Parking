@@ -8,19 +8,19 @@ class Parking
     
     private Parking(){
         this.parkingPlaces=10;
-        this.park = new ArrayList<String>();
+        this.park = new <String>ArrayList();
         for(int i=0;i<=9;i++){this.park.add("free");}
     }
     
         private Parking(int N){
         this.parkingPlaces=N;
-        this.park = new ArrayList<String>(N);
+        this.park = new <String>ArrayList(N);
         for(int i=0;i<=N-1;i++){this.park.add("free");}
     }
     
     public void createParking(int N){
         this.parkingPlaces=N;
-        this.park = new ArrayList<String>(N);
+        this.park = new <String>ArrayList(N);
         for(int i=0;i<=N-1;i++){this.park.add("free");}
     }
     
@@ -50,11 +50,13 @@ class Parking
     
     public boolean putCar(Object carNumber){
         if(isFreePlace()){
-            this.park.set(getFreePlace(),carNumber);
+            int freePlace=this.getFreePlace()+1;
+            this.park.set(this.getFreePlace(),carNumber);
+            System.out.println(">>> You can park "+carNumber+" on place No "+freePlace);
             return true;}
         else{
-            return false;}
-        
+            System.out.println(">>> You can't park "+carNumber+", no free place on parking");
+            return false;}       
     }
     
     public boolean isFreePlace(){
@@ -82,6 +84,28 @@ class Parking
         }  
     }
     
+    public List getParkingCars(){
+        List<String> park2; 
+        park2 = (ArrayList<String>) ((ArrayList) this.park).clone();
+        while(park2.contains("free")){
+             park2.remove(park2.indexOf("free"));
+        }
+        if(park2.size()>0){
+            return park2;
+        }
+        else{
+            return null;    
+        }                
+    }
+    
+    public void printParkingCars(){
+        if(this.getParkingCars() != null){
+            System.out.println(">>> Cars on parking: "+this.getParkingCars());
+        }
+        else{
+            System.out.println(">>> No cars on parking");
+        }              
+    }
     
     
 /////////////////////////////////////////////////////////////
@@ -92,8 +116,8 @@ class Parking
         System.out.println("All places = "+p.getAllPlaces());
         System.out.println("park = "+p);
         System.out.println();
-        //p.printParkingCars();
-        //System.out.println("parking cars = "+p.getParkingCars());
+        p.printParkingCars();
+        System.out.println("parking cars = "+p.getParkingCars());
         
         System.out.println("Free place = "+p.getFreePlace());
         p.putCar(1111);
@@ -136,8 +160,8 @@ class Parking
         p.takeCar("2222");
         System.out.println("park = "+p);
         
-        //p.printParkingCars();
-        //System.out.println("parking cars = "+p.getParkingCars());
+        p.printParkingCars();
+        System.out.println("parking cars = "+p.getParkingCars());
     
     }
 }
