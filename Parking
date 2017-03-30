@@ -8,19 +8,19 @@ class Parking
     
     private Parking(){
         this.parkingPlaces=10;
-        this.park = new <String>ArrayList();
+        this.park = new ArrayList<String>();
         for(int i=0;i<=9;i++){this.park.add("free");}
     }
     
         private Parking(int N){
         this.parkingPlaces=N;
-        this.park = new <String>ArrayList(N);
+        this.park = new ArrayList<String>(N);
         for(int i=0;i<=N-1;i++){this.park.add("free");}
     }
     
     public void createParking(int N){
         this.parkingPlaces=N;
-        this.park = new <String>ArrayList(N);
+        this.park = new ArrayList<String>(N);
         for(int i=0;i<=N-1;i++){this.park.add("free");}
     }
     
