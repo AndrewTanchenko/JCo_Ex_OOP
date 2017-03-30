@@ -3,7 +3,7 @@ import java.util.*;
 class Parking
 {
     private int parkingPlaces;
-    private List park;
+    private List <String> park;
     
     
     private Parking(){
@@ -51,7 +51,7 @@ class Parking
     public boolean putCar(Object carNumber){
         if(isFreePlace()){
             int freePlace=this.getFreePlace()+1;
-            this.park.set(this.getFreePlace(),carNumber);
+            this.park.set(this.getFreePlace(),carNumber.toString());
             System.out.println(">>> You can park "+carNumber+" on place No "+freePlace);
             return true;}
         else{
@@ -66,8 +66,8 @@ class Parking
     }
     
     public boolean takeCar(Object carNumber){
-        if(this.park.indexOf(carNumber)>=0){
-            this.park.set(this.park.indexOf(carNumber),"free");
+        if(this.park.indexOf(carNumber.toString())>=0){
+            this.park.set(this.park.indexOf(carNumber.toString()),"free");
             return true;
         }
         else{
@@ -76,8 +76,8 @@ class Parking
     }
     
     public int getCarPlace(Object carNumber){
-        if(this.park.indexOf(carNumber)>=0){
-            return this.park.indexOf(carNumber)+1;
+        if(this.park.indexOf(carNumber.toString())>=0){
+            return this.park.indexOf(carNumber.toString())+1;
         }
         else{
             return -1;
@@ -154,7 +154,7 @@ class Parking
         System.out.println("8888 has park place = "+p.getCarPlace("8888"));
         System.out.println("park = "+p);
         
-        p.takeCar("1111");
+        p.takeCar(1111);
         System.out.println("park = "+p);
         
         p.takeCar("2222");
