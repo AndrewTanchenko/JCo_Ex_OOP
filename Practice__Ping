@@ -1,0 +1,17 @@
+import java.util.concurrent.*;
+
+public class Ping {
+
+    public static void main(String[] args)
+    {
+        ScheduledExecutorService ses = Executors.newScheduledThreadPool(1);
+        Runnable pinger = new Runnable() {
+            public void run() {
+                //String s = this.getID();
+                System.out.println("PING! "+Thread.currentThread().getId());
+                System.out.println("PING! "+Thread.currentThread().getName());
+            }
+        };
+        ses.scheduleAtFixedRate(pinger, 5, 5, TimeUnit.SECONDS);
+    }
+}
